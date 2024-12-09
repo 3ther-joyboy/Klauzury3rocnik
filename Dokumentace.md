@@ -22,7 +22,7 @@ vyhodnocování skákání jde v tomto pořadí:
 řeší pouze skákání po době co jste na zemi
 ###### WallJump
 jestli jste v dosahu stěny
-`movment` uděla raycast a otočí ho kolem sebe (proměná resolution je jak přesně se otáčí `360/resolution` v případě kdyby `resolution` bylo 36, paprsek se otočí 36 o 10°)
+`movment` uděla raycast a otočí ho kolem sebe (proměná resolution je jak přesně se otáčí `360/resolution` v případě kdyby `resolution` bylo 36, paprsek se otočí 36 o 10°)<br>
 od strany která má nejmenčí vzdálenost raycastu se odrazí v pravém úhlu
 ###### Jump++
 pokud má hráč víc využitelných skoků může skočit ve vzduchu, tento počet se restartuje po odrazu od země nebo stěny.
@@ -35,10 +35,10 @@ zavola funkci do objektu na ktery se `movment` momentalně dívá
 reší mazání objektu ze scény a spawnování rakdoll
 jestli zabitý hráč, funkce spawne posmrtnou kamera
 ##### Marker3D Rakdoll()
-na mistě kde se nachazi `movment` spawne rakdoll se stejnou rychlostí
+na mistě kde se nachazi `movment` spawne rakdoll se stejnou rychlostí<br>
 vrací objekt `Marker3D` aby posmrtna kamera se na ni mohla zaměřit
 ### Ovladani
-vola reference na objekt `movment` ktery se zrovna označuje jako hrač, a vola do něj funkce podle inputu 
+vola reference na objekt `movment` ktery se zrovna označuje jako hrač, a vola do něj funkce podle inputu <br>
 take zaznamenava vaše inputy do `RecordFrame` listu ktery předa nove vzpomince po konci konajícího se ciklu
 #### Duležité Funkce
 ##### GetPlayerReady(bool)
@@ -62,9 +62,9 @@ vezme přvní `RecordFrame` z listu, sve referenci `movment` nastavi nastavajici
 Godot nemá deterministikou fyziku, takže po několika kolizích se stěnou se to co dělá vzpomínka odlišovat od toho co jste dělal předtím
 ## Items
 ### usableObjet
-objekt ktery se použiva pouze ke komunikaci
-Ruzne itemy potřebuji ruzne informace k fungování, tudíš jejednoduší vytvořit objekt který všechny tyto informace může mít, než vypisovat v každé funkci informace které stejně nevyužije
-objekt obsahuje:
+objekt ktery se použiva pouze ke komunikaci<br>
+Ruzne itemy potřebuji ruzne informace k fungování, tudíš jejednoduší vytvořit objekt který všechny tyto informace může mít, než vypisovat v každé funkci informace které stejně nevyužije<br>
+objekt obsahuje:<br>
 ```
 float Force;
 Node executableNode
@@ -106,23 +106,23 @@ Jestli pasivní schopnost je použe zlepšení statistik, doporučuju si vytvoř
 	}
 ```
 #### Chyba
-přište použe Interface a ne abstraktni objekt
-timhle sem musel pracovat s každým novím objektem jako s `Node` který nemá pozici, takže item jako `fireball` byl daleko složitější vytvořit
-A implementaci těch par funkci a proměných manualně by nebyl zas tak velký problém
+přište použe Interface a ne abstraktni objekt<br>
+timhle sem musel pracovat s každým novím objektem jako s `Node` který nemá pozici, takže item jako `fireball` byl daleko složitější vytvořit<br>
+A implementaci těch par funkci a proměných manualně by nebyl zas tak velký problém<br>
 ### Inventory / HUD (Heds up display)
 zařizuje funkčnost inventáře jako je vybýrání/používání itemů a zborazování informací na obrazovce 
 #### Duležité funkce
 ##### int UseItem(usableObject)
-objekt si uchovává jaká slot je zrovna vybrán během použití najde tolikátý `Item` v inventáři a na daný objekt zavolá abstraktní funkci `Use(usableObjet)` do ktere předa komunikačni objěk. (strukturu a popsání kominikačniho objektu najdeme v sekci ##Items) 
-funkce vraci intiger kolikaty `Item` byl zrovna použit aby to mohlo být zapsáno do `RecordFrame`, pokut nemá žádné `Item` tak vrátí -1
+objekt si uchovává jaká slot je zrovna vybrán během použití najde tolikátý `Item` v inventáři a na daný objekt zavolá abstraktní funkci `Use(usableObjet)` do ktere předa komunikačni objěk. (strukturu a popsání kominikačniho objektu najdeme v sekci ##Items) <br>
+funkce vraci intiger kolikaty `Item` byl zrovna použit aby to mohlo být zapsáno do `RecordFrame`, pokut nemá žádné `Item` tak vrátí -1<br>
 ##### MoveInInventory(int)
-posune vas v inventaři o předany intiger
-pokud se pokusite dostat na N+1 `Item`, dá vást to na prví Item v inventáři (to samé i naopak)
+posune vas v inventaři o předany intiger<br>
+pokud se pokusite dostat na N+1 `Item`, dá vást to na prví Item v inventáři (to samé i naopak)<br>
 ##### UpdateInventory()
-Smaše všechny `Itemy` z listu a znova je tam všechny vypíše
+Smaše všechny `Itemy` z listu a znova je tam všechny vypíše<br>
 #### Chyba
-tyto dvě funkčnosti by měli být rozděleny do 2 různých objektů, takhle se v tom dělá zmatek
-U vytvařeni inventaře mi došlo až jak moc objektově orientovany godot je, a itemy do toho inventaře nebylo instancovat vubec třeba a stačilo je mít v jednom Arrayi (neboď na pozadi je to v něm stejně jen musim zbytečně využivat funkce z 3tiho objektu)
+tyto dvě funkčnosti by měli být rozděleny do 2 různých objektů, takhle se v tom dělá zmatek<br>
+U vytvařeni inventaře mi došlo až jak moc objektově orientovany godot je, a itemy do toho inventaře nebylo instancovat vubec třeba a stačilo je mít v jednom Arrayi (neboď na pozadi je to v něm stejně jen musim zbytečně využivat funkce z 3tiho objektu)<br>
 ## Generace
 vždi na začatku noveho ciklu cela scena se smaže a vygeneruje se zcela nová ze stejného seedu ve stejném pořadí, tudíš po požadavku na vygenerovani vice věci, začatek zustane stejný a nove věci se přidaji
 ### Start/Finish
@@ -130,31 +130,27 @@ generuje se tak že se vezme `seed` + ciklus, z toho se vybere první místnost,
 ### Generovani prostředi
 každý objekt, který není garantovaný být na mapě má 1/3 že na ni zustane pro daný seed
 ### Item
-vybere se náhodná pozice mezi dvouma bodama v (`ItemSpawnLocation`) na ni se spawne item ktery se pote teleportuje k zemi
+vybere se náhodná pozice mezi dvouma bodama v (`ItemSpawnLocation`) na ni se spawne item ktery se pote teleportuje k zemi<br>
 tohle probjehne tolikrat kolikaty je ciklus
 ## QOL (quality of live)
 ### Audio settings
-(po tom co sem pochopil jak funguje godot)
+(po tom co sem pochopil jak funguje godot)<br>
 V menu Každá kolonka s posuvníkem a jménem je vlastí objěkt `audioChanger`, každy objekt oblada jeden audio Bus, v menu se prodecuralně vygeneruje pro gaždy Bus ve hře
 ### Spawn Camp
-Po dobu co hráč zustane v začatečni mistnosti tak ostatni vzpominky ktere se tam spawnuli s ním ho nemůžeou zabít
-ovšem v moment kdy opustí tuto zónu hurtbox hrače se aktivuje 
-(hitbox -> co zabíjí, hurtbox -> co musí trefit aby zabili, collisionbox -> co interaguje s fyzikou)
-
-Aby se zabránilo dlouhavému vyčkávání v startovní místnosti tak na každí ciklus hráč má vyčleněný čas, který jestli vyprší hráč prohraje.
+Po dobu co hráč zustane v začatečni mistnosti tak ostatni vzpominky ktere se tam spawnuli s ním ho nemůžeou zabít<br>
+ovšem v moment kdy opustí tuto zónu hurtbox hrače se aktivuje <br>
+(hitbox -> co zabíjí, hurtbox -> co musí trefit aby zabili, collisionbox -> co interaguje s fyzikou)<br>
+<br>
+Aby se zabránilo dlouhavému vyčkávání v startovní místnosti tak na každí ciklus hráč má vyčleněný čas, který jestli vyprší hráč prohraje.<br>
 ### Ukazatel
-cilova mistnost je vždi zvírazněna ikonou ktera jde vidět přez stěny
+cilova mistnost je vždi zvírazněna ikonou ktera jde vidět přez stěny<br>
 kromě toho hrač při spawnutí se dívá přímo směrem na tuto značku
 ### Binds
-v menu se dá přenastavit ovládání na libovolný druh vztupní periferie
-vždy po kliknuti an tlačitko, prvni dalši input se přida do listu těchto akci
-jestli chcete smazat, musíte restartovat celou akci
+v menu se dá přenastavit ovládání na libovolný druh vztupní periferie<br>
+vždy po kliknuti an tlačitko, prvni dalši input se přida do listu těchto akci<br>
+jestli chcete smazat, musíte restartovat celou akci<br>
 ### Smrt
-když jakakoliv vzpominka zemře, necha po sobjě takzvanou "ragdoll" (mrtvolu) ktera smrt uděla plinulejši a rovnou něco nezmizí
-
-po smrti hráče hra dál běží, avšak hráč už nemůže interagovat s hrou
-kamera nasleduje ragdoll takže smrt neni jenom nahle zčernání obrazovky
-
-## Seznam "Mechanik" [11]
-[ ] video
-[~] 3 mapy
+když jakakoliv vzpominka zemře, necha po sobjě takzvanou "ragdoll" (mrtvolu) ktera smrt uděla plinulejši a rovnou něco nezmizí<br>
+<br>
+po smrti hráče hra dál běží, avšak hráč už nemůže interagovat s hrou<br>
+kamera nasleduje ragdoll takže smrt neni jenom nahle zčernání obrazovky<br>
