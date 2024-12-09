@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fapsn7yt1klr"]
+
+[ext_resource type="ArrayMesh" uid="uid://cvwwcgku8rgr6" path="res://addons/kaykit_dungeon_remastered/Assets/obj/pillar.obj" id="1_yjvgt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_em40k"]
+height = 4.07784
+radius = 0.654444
+
+[node name="Pillar" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -7)
+mesh = ExtResource("1_yjvgt")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99054, 0.0060997)
+shape = SubResource("CylinderShape3D_em40k")

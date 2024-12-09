@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgd71ryysys1k"]
+
+[ext_resource type="Script" path="res://items/RockFriend/RockFriend.cs" id="1_4hjqx"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_4hjqx")

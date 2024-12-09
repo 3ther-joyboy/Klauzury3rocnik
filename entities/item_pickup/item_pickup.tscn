@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsct51wb33hup"]
+
+[ext_resource type="Script" path="res://entities/item_pickup/ItemPickup.cs" id="1_7a3cn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fii1q"]
+radius = 0.82266
+
+[sub_resource type="Animation" id="Animation_v0wmf"]
+resource_name = "spinning"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.2, 0), Vector3(0, 0.2, 0), Vector3(0, -0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bwogw"]
+_data = {
+"spinning": SubResource("Animation_v0wmf")
+}
+
+[node name="ItemPickup" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_7a3cn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fii1q")
+
+[node name="Icon" type="Sprite3D" parent="."]
+transform = Transform3D(0.999999, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 0.999999, 0, -0.2, 0)
+pixel_size = 0.005
+region_rect = Rect2(0, 0, 128, 128)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Icon"]
+transform = Transform3D(1, 0, -4.46639e-06, 0, 1, 0, 4.46639e-06, 0, 1, 0, 0.2, 0)
+light_color = Color(0.0352941, 1, 0.686275, 1)
+light_energy = 0.3
+omni_range = 1.51232
+omni_attenuation = 0.615572
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bwogw")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -10, 0)
+
+[connection signal="body_entered" from="." to="." method="OnEnter"]

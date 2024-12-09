@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ejmnw3g777r5"]
+
+[ext_resource type="Script" path="res://items/doubleJump/MultipleJump.cs" id="1_sg0l3"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_sg0l3")
+ItemName = "Hopoo Feather"
+Description = "Gives additional Jump you can use in mid air"
+Image = "res://items/doubleJump/hopooFeather.png"

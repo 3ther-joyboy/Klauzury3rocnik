@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://h54ead71so7s"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpehd1dr87ub" path="res://addons/kaykit_dungeon_remastered/Assets/obj/wall_half_endcap.obj" id="1_mo7jr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7fvc1"]
+points = PackedVector3Array(0, 0, -0.500001, 2, 0, -0.500001, 0, 0, 0.5, 0, 4, -0.500001, 2, 0, 0.499902, 2, 4, -0.500001, 1.09984, 0, 0.5, 0, 4, 0.5, 2, 4, 0.499902, 1.09984, 4, 0.5)
+
+[node name="WallHalfEndcap" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 0, -16)
+mesh = ExtResource("1_mo7jr")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_7fvc1")

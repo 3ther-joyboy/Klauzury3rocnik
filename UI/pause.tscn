@@ -1,0 +1,145 @@
+[gd_scene load_steps=15 format=3 uid="uid://due3468xn4t8u"]
+
+[ext_resource type="Texture2D" uid="uid://of0h0xmo3eoj" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0119.png" id="1_23dk6"]
+[ext_resource type="Theme" uid="uid://cjbr8757wxctg" path="res://assets/theme1.tres" id="1_tr04x"]
+[ext_resource type="Texture2D" uid="uid://cxfyj4cmv76h7" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0169.png" id="2_38dne"]
+[ext_resource type="Script" path="res://UI/PauseCusLazy.cs" id="2_s3wdb"]
+[ext_resource type="Texture2D" uid="uid://cqdqdd34bgmny" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0167.png" id="3_oa613"]
+[ext_resource type="Texture2D" uid="uid://c70fa0qj7bp26" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0168.png" id="4_x1qfc"]
+[ext_resource type="Texture2D" uid="uid://d11dgtslqvgnq" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0153.png" id="5_2kwmv"]
+[ext_resource type="Texture2D" uid="uid://dpaiggu0omnuh" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0111.png" id="6_3hjbw"]
+[ext_resource type="Texture2D" uid="uid://bifpebwuhhkle" path="res://kenney_inputPromptsPixel16×/Tiles/tile_0087.png" id="7_ex1yh"]
+[ext_resource type="Script" path="res://UI/binding_system.cs" id="8_xj3r6"]
+
+[sub_resource type="Gradient" id="Gradient_dt8ml"]
+colors = PackedColorArray(1, 1, 1, 0.376471, 1, 1, 1, 0.313726)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8tg4f"]
+noise_type = 5
+frequency = 0.122
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0decn"]
+color_ramp = SubResource("Gradient_dt8ml")
+noise = SubResource("FastNoiseLite_8tg4f")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugr5m"]
+texture = SubResource("NoiseTexture2D_0decn")
+
+[node name="Pause" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tr04x")
+script = ExtResource("2_s3wdb")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(763, 847)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ugr5m")
+
+[node name="ItemList" type="ItemList" parent="."]
+texture_filter = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.35
+anchor_bottom = 0.7
+item_count = 7
+fixed_icon_size = Vector2i(50, 50)
+item_0/text = "E"
+item_0/icon = ExtResource("1_23dk6")
+item_1/text = "S"
+item_1/icon = ExtResource("2_38dne")
+item_2/text = "F"
+item_2/icon = ExtResource("3_oa613")
+item_3/text = "D"
+item_3/icon = ExtResource("4_x1qfc")
+item_4/text = "\"space\""
+item_4/icon = ExtResource("5_2kwmv")
+item_5/text = "E"
+item_5/icon = ExtResource("6_3hjbw")
+item_6/text = "E"
+item_6/icon = ExtResource("7_ex1yh")
+script = ExtResource("8_xj3r6")
+images = PackedStringArray("res://kenney_inputPromptsPixel16×/Tiles/tile_0119.png", "res://.godot/imported/tile_0168.png-01f4f42de99b2b0e68aa4556b186fa2b.ctex", "res://.godot/imported/tile_0169.png-80f31aac7e9a074dc7f4881f2e0ff6fd.ctex", "res://.godot/imported/tile_0167.png-e2236ee5fad1146e5acac4a503a0ec10.ctex", "res://.godot/imported/tile_0153.png-b53a6d0c7f1bd6bb73ba1eea9fa573c2.ctex", "res://.godot/imported/tile_0111.png-c776a2137b0a8c61fdc80c9ceb48534e.ctex", "res://kenney_inputPromptsPixel16×/Tiles/tile_0617.png", "res://assets/icon.svg", "res://assets/icon.svg", "res://kenney_inputPromptsPixel16×/Tiles/tile_0032.png")
+inputTypes = PackedStringArray("Forwad", "Back", "Left", "Right", "Jump", "Use", "Pause", "NextItem", "PreviusItem", "Un-bind")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="VolumeSliders" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65
+anchor_top = 0.1
+anchor_right = 0.95
+anchor_bottom = 0.9
+alignment = 1
+
+[node name="SliderBlock" type="VBoxContainer" parent="VolumeSliders"]
+layout_mode = 2
+
+[node name="Master" type="HSlider" parent="VolumeSliders/SliderBlock"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VolumeSliders/SliderBlock"]
+layout_mode = 2
+text = "Master
+"
+
+[node name="SliderBlock2" type="VBoxContainer" parent="VolumeSliders"]
+layout_mode = 2
+
+[node name="SFX" type="HSlider" parent="VolumeSliders/SliderBlock2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VolumeSliders/SliderBlock2"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SliderBlock3" type="VBoxContainer" parent="VolumeSliders"]
+layout_mode = 2
+
+[node name="Music" type="HSlider" parent="VolumeSliders/SliderBlock3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VolumeSliders/SliderBlock3"]
+layout_mode = 2
+text = "Music"
+
+[connection signal="item_activated" from="ItemList" to="ItemList" method="OnClick"]
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="Return"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="Restart"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="ExitToMenu"]

@@ -1,0 +1,131 @@
+[gd_scene load_steps=12 format=3 uid="uid://b0h4q3jxpfb8r"]
+
+[ext_resource type="Script" path="res://movment.cs" id="1_8qnvs"]
+[ext_resource type="Material" uid="uid://oob6p5w3hsl5" path="res://addons/kenney_prototype_tools/materials/red/material_09.tres" id="2_ln5on"]
+[ext_resource type="PackedScene" uid="uid://d28qu8oakvjdp" path="res://UI/hud.tscn" id="2_tppty"]
+[ext_resource type="AudioStream" uid="uid://bpuqe4rfsr52d" path="res://assets/SoundEffects/Tiles/Steps_tiles-001.ogg" id="4_nhmpe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wx2m"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fgu7v"]
+radius = 0.3
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_leus8"]
+height = 1.0
+radius = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ksd6j"]
+height = 1.0
+radius = 1.28152
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_phtst"]
+height = 1.0
+radius = 0.3
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r8yom"]
+radius = 0.75
+height = 2.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_mf783"]
+material = ExtResource("2_ln5on")
+radius = 0.7
+height = 2.3
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 4
+floor_stop_on_slope = false
+floor_max_angle = 0.802851
+script = ExtResource("1_8qnvs")
+
+[node name="Torzo" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Head" type="Marker3D" parent="Torzo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="ears" type="AudioListener3D" parent="Torzo/Head"]
+
+[node name="Camera3D" type="Camera3D" parent="Torzo/Head"]
+fov = 85.0
+
+[node name="Control" parent="Torzo/Head/Camera3D" instance=ExtResource("2_tppty")]
+visible = false
+
+[node name="cast" type="RayCast3D" parent="Torzo/Head/Camera3D"]
+visible = false
+target_position = Vector3(0, 0, -10)
+
+[node name="Top" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_0wx2m")
+
+[node name="Bottom" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_fgu7v")
+
+[node name="FreeHeadSpace" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CylinderShape3D_leus8")
+target_position = Vector3(0, 1, 0)
+debug_shape_custom_color = Color(1, 0.615686, 0.309804, 1)
+
+[node name="WallJumpRange" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallJumpRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_ksd6j")
+
+[node name="Jump wait time" type="Timer" parent="WallJumpRange"]
+wait_time = 0.2
+one_shot = true
+
+[node name="WallCast" type="ShapeCast3D" parent="WallJumpRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+shape = SubResource("CylinderShape3D_phtst")
+target_position = Vector3(0, 0, -2)
+max_results = 1
+
+[node name="Items" type="Node" parent="."]
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_r8yom")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.127, 0)
+mesh = SubResource("CapsuleMesh_mf783")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 2.19317e-05, 4.94665e-06, -2.19316e-05, 1, -2.67022e-05, -4.94724e-06, 2.6702e-05, 1, 0, 1.98802, 0)
+omni_range = 20.6693
+
+[node name="walking" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.688242, -0.527112, -0.498473, 0.690064, 0.263583, 0.674045, -0.223908, -0.807884, 0.54515, 0, 0, 0)
+stream = ExtResource("4_nhmpe")
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="walking"]
+wait_time = 0.5
+one_shot = true
+
+[node name="itemSounds" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.221548, -0.0990098, -0.97011, 0.505896, -0.838815, 0.201143, -0.833658, -0.535338, -0.135749, 0, 1.79346, 0)
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="jumping" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.688242, -0.527112, -0.498473, 0.690064, 0.263583, 0.674045, -0.223908, -0.807884, 0.54515, 0, 0, 0)
+stream = ExtResource("4_nhmpe")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Hitbox" to="." method="EnteredHitbox"]
+[connection signal="timeout" from="walking/Timer" to="." method="PlayStepSound"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg4ey87iujqot"]
+
+[ext_resource type="ArrayMesh" uid="uid://ckh66178bhdu8" path="res://addons/kaykit_dungeon_remastered/Assets/obj/table_medium_decorated_A.obj" id="1_n1kbt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s253e"]
+size = Vector3(1.82129, 1.1515, 1.91821)
+
+[node name="TableMediumDecoratedA" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0, -10)
+mesh = ExtResource("1_n1kbt")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555032, 0.0060997)
+shape = SubResource("BoxShape3D_s253e")

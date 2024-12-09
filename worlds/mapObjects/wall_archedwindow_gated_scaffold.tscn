@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl21my5cle4lm"]
+
+[ext_resource type="ArrayMesh" uid="uid://dj7c2gkk05hsr" path="res://addons/kaykit_dungeon_remastered/Assets/obj/wall_archedwindow_gated_scaffold.obj" id="1_471tu"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u35jy"]
+points = PackedVector3Array(2, 4, 0.5, 2, 0, 0.5, 2, 4, -0.5, -2, 4, 0.5, 2, 0, -0.5, -2, 0, 0.5, -2, 4, -0.5, -2, 0, -0.5)
+
+[node name="WallArchedwindowGatedScaffold" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -16)
+mesh = ExtResource("1_471tu")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_u35jy")

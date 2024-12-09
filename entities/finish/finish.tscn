@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://n4eqwjmitjl5"]
+
+[ext_resource type="Script" path="res://entities/finish/finish.cs" id="1_iy5hp"]
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_iy5hp")
+
+[connection signal="body_entered" from="." to="." method="Enter"]

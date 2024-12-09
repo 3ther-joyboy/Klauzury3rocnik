@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://q425x7tgfi06"]
+
+[ext_resource type="Script" path="res://items/trampoline/trampoline.cs" id="1_co8gf"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_co8gf")
+ItemName = "Trampoline"
+Description = "boosts your jump, or you can spawn a trampoline"
+Image = "res://items/trampoline/trampolina.png"

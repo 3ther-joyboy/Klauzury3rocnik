@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp5umq38fdg4n"]
+
+[ext_resource type="ArrayMesh" uid="uid://duhlb6nkalnje" path="res://addons/kaykit_dungeon_remastered/Assets/obj/stairs_wood_decorated.obj" id="1_tb4r3"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_35xp7"]
+points = PackedVector3Array(-1.65, 0.0105824, 0.408233, -1.50699, 0.524183, 6.04643, 1.65, 0.0513231, 0.460063, 1.5, 0.00783628, 5.78052, 1.54033, 4.14286, 1.00057, -1.43947, 4.05, 0.0880033, 1.54033, 3.38073, -0.0470223, -1.50699, 4.14286, 1.00057, 1.54033, 0.524183, 6.04643, -1.64197, 0.0203979, 4.65803, 1.73095, 3.57106, 0.524499, -1.50699, 3.38073, -0.0470223, -1.47237, 0, 5.7912, 1.65, 0.0513231, 4.63273, 1.4728, 4.05, 0.0880033, 1.54033, 1.09557, 5.2846, -1.50699, 1.5718, 4.61822, -1.48378, 0.265852, 6, 1.73095, 3.57106, 0.334191, 1.73095, 3.47548, 0.715404, 1.5, 0.28617, 5.96579, -1.50699, 1.09557, 5.2846, 1.3497, 1.5718, 4.61822)
+
+[node name="StairsWoodDecorated" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -18)
+mesh = ExtResource("1_tb4r3")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_35xp7")

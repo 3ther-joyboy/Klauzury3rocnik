@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c551x3nb5lx46"]
+
+[ext_resource type="ArrayMesh" uid="uid://olwvkgptg1mx" path="res://addons/kaykit_dungeon_remastered/Assets/obj/bed_frame.obj" id="1_2otq6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpxrx"]
+size = Vector3(1.57031, 0.68959, 2.86816)
+
+[node name="BedFrame" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+mesh = ExtResource("1_2otq6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.403131, -0.0639319)
+shape = SubResource("BoxShape3D_jpxrx")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://hkayhbq6860d"]
+
+[ext_resource type="ArrayMesh" uid="uid://cfnoxfsxqwder" path="res://addons/kaykit_dungeon_remastered/Assets/obj/table_long_broken.obj" id="1_vagb5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhdm2"]
+size = Vector3(1.82129, 1.1515, 3.84131)
+
+[node name="TableLongBroken" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -9)
+mesh = ExtResource("1_vagb5")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.555032, 0.0060997)
+shape = SubResource("BoxShape3D_xhdm2")

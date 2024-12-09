@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://1flbalphj6xl"]
+
+[ext_resource type="Script" path="res://items/energyDrink/energy_drink.cs" id="1_4qwlq"]
+
+[node name="Energi drink" type="Node"]
+script = ExtResource("1_4qwlq")
+ItemName = "Energy drink"
+Description = "Gives a speed boost"

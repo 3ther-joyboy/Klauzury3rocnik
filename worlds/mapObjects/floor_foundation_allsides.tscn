@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm2lsqs55t14i"]
+
+[ext_resource type="ArrayMesh" uid="uid://cq0ue3cq8ugxc" path="res://addons/kaykit_dungeon_remastered/Assets/obj/floor_foundation_allsides.obj" id="1_mrjn3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjbl5"]
+size = Vector3(2, 2.02943, 1.99902)
+
+[node name="FloorFoundationAllsides" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 10)
+mesh = ExtResource("1_mrjn3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993997, 0.0060997)
+shape = SubResource("BoxShape3D_qjbl5")

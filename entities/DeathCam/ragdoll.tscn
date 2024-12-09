@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyaru25vykvdm"]
+
+[ext_resource type="Script" path="res://entities/DeathCam/startAnimation.cs" id="1_rhk86"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u7y4v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8osfh"]
+
+[sub_resource type="Animation" id="Animation_b0nx8"]
+resource_name = "lowerBrightes"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(2.73208, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_clfki"]
+_data = {
+"lowerBrightes": SubResource("Animation_b0nx8")
+}
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 0
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u7y4v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_8osfh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.873028, 0.315867, 1.34766e-06, 1)
+light_energy = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_clfki")
+}
+script = ExtResource("1_rhk86")
+AnimationName = "lowerBrightes"

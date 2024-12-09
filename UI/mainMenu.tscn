@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvqidls6o4obf"]
+
+[ext_resource type="Theme" uid="uid://cjbr8757wxctg" path="res://assets/theme1.tres" id="1_t4hjy"]
+[ext_resource type="Script" path="res://UI/mainMenu.cs" id="2_8j77t"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t4hjy")
+script = ExtResource("2_8j77t")
+
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Seed" type="LineEdit" parent="MenuContainer"]
+layout_mode = 2
+placeholder_text = "Seed"
+
+[node name="Exit" type="Button" parent="MenuContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MenuContainer/Play" to="." method="StartGame"]
+[connection signal="pressed" from="MenuContainer/Exit" to="." method="Quit"]

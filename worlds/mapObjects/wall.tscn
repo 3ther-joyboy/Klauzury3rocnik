@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://7lgsttuo8sqt"]
+
+[ext_resource type="ArrayMesh" uid="uid://dtmuqi21dbpsg" path="res://addons/kaykit_dungeon_remastered/Assets/obj/wall.obj" id="1_xgofy"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u35jy"]
+points = PackedVector3Array(2, 4, 0.5, 2, 0, 0.5, 2, 4, -0.5, -2, 4, 0.5, 2, 0, -0.5, -2, 0, 0.5, -2, 4, -0.5, -2, 0, -0.5)
+
+[node name="Wall" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -16)
+mesh = ExtResource("1_xgofy")
+skeleton = NodePath("../FloorTileSmall")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_u35jy")

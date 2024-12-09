@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3r0rpx50dyws"]
+
+[ext_resource type="Script" path="res://items/energyDrink/energy_drink.cs" id="1_c2u5h"]
+
+[node name="EnergyDrink" type="Node"]
+script = ExtResource("1_c2u5h")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://wtrkjacy21kx"]
+
+[ext_resource type="ArrayMesh" uid="uid://c5d1u1qq1c0tf" path="res://addons/kaykit_dungeon_remastered/Assets/obj/coin_stack_medium.obj" id="1_okfju"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cpcns"]
+size = Vector3(1.02344, 0.601593, 1.28223)
+
+[node name="CoinStackMedium" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+mesh = ExtResource("1_okfju")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.359132, 0.0885948)
+shape = SubResource("BoxShape3D_cpcns")

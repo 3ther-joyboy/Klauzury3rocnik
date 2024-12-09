@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg46g1f70hsel"]
+
+[ext_resource type="Script" path="res://entities/spawner/SpawnFinish.cs" id="1_27fpv"]
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_27fpv")
+
+[connection signal="body_entered" from="." to="." method="VzpominkaEntered"]
+[connection signal="body_exited" from="." to="." method="VzpominkaExited"]
