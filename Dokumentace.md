@@ -4,8 +4,8 @@
 # O projektu 
 Projekt byl inspirován hrou kterou jsme viděl na jednom game jamu, tuto hru jsem spětně už nenašel.
 ## Game loop
-Mate se dostat z mistnosti A do mistnosti B a zaroveň se musite vyhibat svému minulému já ("Vzpomínkám"), s každým ciklem přibívá vzpomínek kterým se musíte vyhíbat.
-K obohaceni byla přidana dinamicka mapa (jak ma [Risk of rain 2](https://riskofrain2.fandom.com/wiki/Environments)) a přidáním předmětů které vám po dobu držení dávájí permanentí výhodu v statistikách nebo si můžete zvolit použít a využít jeho speciální efekt více impulzním způsobem.
+Mate se dostat z mistnosti A do mistnosti B a zaroveň se musite vyhibat svému minulému já ("Vzpomínkám"), s každým ciklem přibívá vzpomínek kterým se musíte vyhíbat.<br>
+K obohaceni byla přidana dinamicka mapa (jak ma [Risk of rain 2](https://riskofrain2.fandom.com/wiki/Environments)) a přidáním předmětů které vám po dobu držení dávájí permanentí výhodu v statistikách nebo si můžete zvolit použít a využít jeho speciální efekt více impulznímzpůsobem.
 ## Hrač / objekt hrače
 ### Objekt Hrače (`movment`)
 Tento objekt `movment`, sam o sobě nema ovladani a funguje poze jako kostra, ma v sobje pouze zakladni logiku a vola připadně funkce co řeši ostatni věci jako je použivani itemu ve objektu `hud`
