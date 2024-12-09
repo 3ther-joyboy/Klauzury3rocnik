@@ -154,3 +154,16 @@ když jakakoliv vzpominka zemře, necha po sobjě takzvanou "ragdoll" (mrtvolu) 
 <br>
 po smrti hráče hra dál běží, avšak hráč už nemůže interagovat s hrou<br>
 kamera nasleduje ragdoll takže smrt neni jenom nahle zčernání obrazovky<br>
+# Užite technologie
+ - Ve hře
+  - Risk of rain 2 Images 
+  - Halfilfe 1 Audio
+  - Bleander -> par modelu
+  - kenny_prototype_tools
+  - kaykit_dungeon_remastered
+ - Ostatní
+  - Kdnlive -> video střih
+  - neovim -> text/code editor
+  - git -> version control
+  - Godot
+  - .Net
